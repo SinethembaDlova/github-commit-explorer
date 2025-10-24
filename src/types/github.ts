@@ -88,3 +88,30 @@ export interface GitHubApiError {
   documentation_url?: string;
   status?: number;
 }
+
+
+export interface GitHubStore {
+  // State
+  repositories: Repository[];
+  commits: Commit[];
+  favorites: FavoriteCommit[];
+  selectedRepo: Repository | null;
+  selectedCommitDetails: CommitDetails | null;
+  currentPage: number;
+  hasMoreCommits: boolean;
+  sortOrder: SortOrder;
+  loading: boolean;
+  error: string | null;
+  
+  // Actions
+  fetchRepositories: (username: string) => Promise<void>;
+  fetchCommits: (username: string, repoName: string, page?: number) => Promise<void>;
+  fetchCommitDetails: (username: string, repoName: string, sha: string) => Promise<void>;
+  addFavorite: (commit: Commit, repoName: string, username: string) => void;
+  removeFavorite: (sha: string) => void;
+  setSelectedRepo: (repo: Repository | null) => void;
+  setSortOrder: (order: SortOrder) => void;
+  clearError: () => void;
+  resetCommits: () => void;
+  clearSelectedCommitDetails: () => void;
+}
