@@ -1,5 +1,5 @@
 // GitHub API service layer for making API calls
-import type { Repository, Commit } from '../types/github';
+import type { Repository, Commit, CommitDetails } from '../types/github';
 
 const GITHUB_API_BASE = 'https://api.github.com';
 
@@ -37,4 +37,16 @@ export async function fetchRepositoryCommits(
     `${GITHUB_API_BASE}/repos/${username}/${repoName}/commits?page=${page}&per_page=${perPage}`
   );
   return handleResponse<Commit[]>(response);
+}
+
+// Fetch detailed information about a specific commit including file changes
+export async function fetchCommitDetails(
+  username: string,
+  repoName: string,
+  sha: string
+): Promise<CommitDetails> {
+  const response = await fetch(
+    `${GITHUB_API_BASE}/repos/${username}/${repoName}/commits/${sha}`
+  );
+  return handleResponse<CommitDetails>(response);
 }
