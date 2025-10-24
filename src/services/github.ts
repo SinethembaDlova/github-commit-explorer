@@ -1,6 +1,6 @@
 // GitHub API service layer for making API calls
+import type { Repository, Commit } from '../types/github';
 
-import type { Repository } from '../types/github';
 const GITHUB_API_BASE = 'https://api.github.com';
 
 // Helper function to handle API responses and errors
@@ -24,4 +24,17 @@ async function handleResponse<T>(response: Response): Promise<T> {
 export async function fetchUserRepositories(username: string): Promise<Repository[]> {
   const response = await fetch(`${GITHUB_API_BASE}/users/${username}/repos?sort=updated&per_page=100`);
   return handleResponse<Repository[]>(response);
+}
+
+// Fetch commits for a specific repository with pagination
+export async function fetchRepositoryCommits(
+  username: string,
+  repoName: string,
+  page: number = 1,
+  perPage: number = 10
+): Promise<Commit[]> {
+  const response = await fetch(
+    `${GITHUB_API_BASE}/repos/${username}/${repoName}/commits?page=${page}&per_page=${perPage}`
+  );
+  return handleResponse<Commit[]>(response);
 }
