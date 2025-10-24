@@ -1,3 +1,8 @@
+// GitHub API service layer for making API calls
+
+import type { Repository } from '../types/github';
+const GITHUB_API_BASE = 'https://api.github.com';
+
 // Helper function to handle API responses and errors
 async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
@@ -15,4 +20,8 @@ async function handleResponse<T>(response: Response): Promise<T> {
   return response.json();
 }
 
-export { handleResponse };
+// Fetch user's public repositories
+export async function fetchUserRepositories(username: string): Promise<Repository[]> {
+  const response = await fetch(`${GITHUB_API_BASE}/users/${username}/repos?sort=updated&per_page=100`);
+  return handleResponse<Repository[]>(response);
+}
