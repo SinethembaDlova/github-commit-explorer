@@ -239,7 +239,6 @@ export default function RepoView() {
                     onAddFavorite={handleAddFavorite}
                     onRemoveFavorite={removeFavorite}
                     onViewDetails={handleViewDetails}
-                    onSortChange={setSortOrder}
                     onLoadMore={handleLoadMore}
                     hasMoreCommits={hasMoreCommits}
                     loading={loading}

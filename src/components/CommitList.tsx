@@ -13,7 +13,7 @@ interface CommitListProps {
   sortOrder: SortOrder;
   onAddFavorite: (commit: Commit) => void;
   onRemoveFavorite: (sha: string) => void;
-  onViewDetails: (commit: Commit) => void;
+  onViewDetails: (commit: Commit) => void | Promise<void>;
   onLoadMore?: () => void;
   hasMoreCommits: boolean;
   loading: boolean;
