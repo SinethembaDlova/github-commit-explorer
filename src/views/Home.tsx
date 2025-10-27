@@ -56,7 +56,7 @@ export default function HomeView() {
                 GitHub Commit Explorer
               </h1>
               <p className="text-muted-foreground text-sm sm:text-base">
-                Enter a GitHub username to explore their repositories and commits
+                Enter a GitHub username to explore their repositories and commits.
               </p>
             </div>
 
@@ -84,7 +84,7 @@ export default function HomeView() {
             {/* Popular Users */}
             <div className="mt-5 pt-5 sm:mt-6 sm:pt-6 border-t border-border">
               <p className="text-[10px] sm:text-xs text-muted-foreground text-center">
-                Popular users:{' '}
+                Qucikly Select Users:{' '}
                 {['octocat', 'sinethembadlova'].map((u, i, arr) => (
                   <span key={u}>
                     <button
