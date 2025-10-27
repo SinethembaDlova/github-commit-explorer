@@ -7,11 +7,12 @@ import { Label } from '../components/ui/label';
 import { Card, CardContent } from '../components/ui/card';
 
 export default function HomeView() {
+  // State Management
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // Basic GitHub username validation
+  // Validation Logic
   const validateUsername = (value: string): boolean => {
     if (!value.trim()) {
       setError('Username is required');
@@ -30,6 +31,7 @@ export default function HomeView() {
     return true;
   };
 
+  // Form Handlers
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateUsername(username)) {
@@ -37,14 +39,17 @@ export default function HomeView() {
     }
   };
 
+  // UI Rendering
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-lg p-6">
+        {/*Header Section*/}
         <div className="text-center mb-6">
           <Github className="w-8 h-8 mx-auto mb-2" />
           <h1 className="text-2xl font-bold">GitHub Commit Explorer</h1>
         </div>
 
+        {/* Form Section */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <Label htmlFor="username">GitHub Username</Label>
