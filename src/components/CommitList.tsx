@@ -1,7 +1,7 @@
 // Component to display list of commits with sorting functionality
 
 import { useMemo } from 'react';
-import { GitCommit, Heart, Info, Calendar, User } from 'lucide-react';
+import { Heart, Info, Calendar, User } from 'lucide-react';
 import type { Commit, SortOrder } from '../types/github';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader } from './ui/card';
@@ -14,7 +14,6 @@ interface CommitListProps {
   onAddFavorite: (commit: Commit) => void;
   onRemoveFavorite: (sha: string) => void;
   onViewDetails: (commit: Commit) => void;
-  onSortChange: (order: SortOrder) => void;
   onLoadMore?: () => void;
   hasMoreCommits: boolean;
   loading: boolean;
@@ -27,7 +26,6 @@ export default function CommitList({
   onAddFavorite,
   onRemoveFavorite,
   onViewDetails,
-  onSortChange,
   onLoadMore,
   hasMoreCommits,
   loading,
