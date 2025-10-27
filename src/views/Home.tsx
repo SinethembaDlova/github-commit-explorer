@@ -31,7 +31,7 @@ export default function HomeView() {
     return true;
   };
 
-  // Form Handlers
+  // Handlers
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateUsername(username)) {
@@ -39,13 +39,13 @@ export default function HomeView() {
     }
   };
 
-  // UI Rendering
+  // UI
   return (
     <div className="min-h-screen flex items-center justify-center p-3 sm:p-4 md:p-6">
       <div className="w-full max-w-md">
         <Card className="shadow-2xl">
           <CardContent className="pt-6 pb-5 sm:pt-8 sm:pb-6 px-4 sm:px-6">
-            {/*Header Section*/}
+            {/* Header */}
             <div className="text-center mb-6 sm:mb-8">
               <div className="flex justify-center mb-3 sm:mb-4">
                 <div className="p-2.5 sm:p-3 bg-primary rounded-xl shadow-lg">
@@ -60,15 +60,12 @@ export default function HomeView() {
               </p>
             </div>
 
-            {/*Form Section*/}
+            {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-foreground">
-                  GitHub Username
-                </Label>
+                <Label htmlFor="username">GitHub Username</Label>
                 <Input
                   id="username"
-                  type="text"
                   placeholder="e.g., octocat"
                   value={username}
                   onChange={(e) => {
@@ -79,14 +76,33 @@ export default function HomeView() {
                 />
                 {error && <p className="text-sm text-destructive font-medium">{error}</p>}
               </div>
-
               <Button type="submit" className="w-full">
                 Explore Repositories
               </Button>
             </form>
+
+            {/* Popular Users */}
+            <div className="mt-5 pt-5 sm:mt-6 sm:pt-6 border-t border-border">
+              <p className="text-[10px] sm:text-xs text-muted-foreground text-center">
+                Popular users:{' '}
+                {['octocat', 'sinethembadlova'].map((u, i, arr) => (
+                  <span key={u}>
+                    <button
+                      type="button"
+                      onClick={() => setUsername(u)}
+                      className="text-foreground hover:text-primary hover:underline underline-offset-4 transition-colors"
+                    >
+                      {u}
+                    </button>
+                    {i < arr.length - 1 && ' · '}
+                  </span>
+                ))}
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>
     </div>
   );
 }
+
