@@ -4,20 +4,37 @@ import { Github } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
-import { Card } from '../components/ui/card';
+import { Card, CardContent } from '../components/ui/card';
 
 export default function HomeView() {
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // Basic GitHub username validation
+  const validateUsername = (value: string): boolean => {
+    if (!value.trim()) {
+      setError('Username is required');
+      return false;
+    }
+    const usernameRegex = /^[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/;
+    if (!usernameRegex.test(value)) {
+      setError('Invalid GitHub username format');
+      return false;
+    }
+    if (value.length > 39) {
+      setError('Username must be 39 characters or less');
+      return false;
+    }
+    setError('');
+    return true;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!username.trim()) {
-      setError('Username is required');
-      return;
+    if (validateUsername(username)) {
+      navigate(`/repos/${username}`);
     }
-    navigate(`/repos/${username}`);
   };
 
   return (
