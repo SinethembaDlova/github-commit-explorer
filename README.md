@@ -12,7 +12,7 @@ A modern, type-safe web application built with React 18 and TypeScript that prov
 
 ## 🚀 Live Demo
 
-<a href="https://github-commit-explorer-five.vercel.app/" target="_blank">🌐 Try it now</a>
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-%F0%9F%94%97-blue)](https://github-commit-explorer-five.vercel.app/)
 
 
 Test with popular GitHub usernames like `sinethembadlova`, `octocat`, or any public GitHub user!
