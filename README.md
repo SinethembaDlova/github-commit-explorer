@@ -14,7 +14,7 @@ A modern, type-safe web application built with React 18 and TypeScript that prov
 
 **Try it now:** [https://github-commit-explorer-five.vercel.app/](https://github-commit-explorer-five.vercel.app/)
 
-Test with popular GitHub usernames like `octocat`, `torvalds`, `sindresorhus`, or any public GitHub user!
+Test with popular GitHub usernames like `sinethembadlova`, `octocat`, or any public GitHub user!
 
 ---
 
